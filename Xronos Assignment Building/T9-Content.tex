@@ -1,0 +1,214 @@
+\documentclass{ximera}
+\input{preamble}
+
+\title{Practice Problems for Topic 9}
+\begin{document}
+\begin{abstract}
+Topic 9 Unlimited Practice
+\end{abstract}
+\maketitle
+
+%%% Topic: Mathematical Reasoning. Subtopics:
+%   Clarifying questions
+%   Extraneous vs vital information/data
+%   Information vs Data
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                        Question Code                           %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{Useful-Sage-Macros}
+\begin{sagesilent}
+q1c1 = RandInt(-5,5)
+q1c2 = RandInt(-5,5)
+q1c3 = RandInt(-5,5)
+q1c4 = RandInt(-5,5)
+q1c5 = RandInt(0,1)
+q1c6 = RandInt(0,1)
+q1c7 = RandInt(1-q1c6,1)
+q1c8 = RandInt(1-q1c5,1)
+
+q1f1 = q1c5*(x - q1c1 - 1) + 1
+q1f2 = q1c6*(x - q1c2 - 1) + 1
+q1f3 = q1c7*(x - q1c3 - 1) + 1
+q1f4 = q1c8*(x - q1c4 - 1) + 1
+
+q1p = expand(q1f1*q1f2*q1f3*q1f4)
+
+q1ans1 = q1c5 + q1c6 + q1c7 + q1c8
+q1ans2 = q1c5*q1c1 + q1c6*q1c2 + q1c7*q1c3 + q1c8*q1c4
+
+\end{sagesilent}
+
+\begin{problem}
+Consider the following polynomial:
+\[
+p(x) = \sage{q1p(x)}
+\]
+
+Fully factor this polynomial to answer the following questions;
+
+How many roots does this polynomial have (counting multiplicity; ie if it has a factor of $x^2$, then that counts as 2 roots for this question). \\
+$\answer{\sage{q1ans1}}$
+
+What is the sum of the zeros of the polynomial?\\
+$\answer{\sage{q1ans2}}$
+
+What is the fully factored form of the polynomial?\\
+$\answer{\sage{(q1f1*q1f2*q1f3*q1f4)(x)}}$
+
+\end{problem}
+
+
+
+\begin{sagesilent}
+q2c1 = RandInt(1,5)
+
+q2f1 = x^4 - q2c1^4
+
+q2ans1 = 2*(q2c1)^(1/2)
+q2ans2 = x^2 + q2c1^2
+q2ans3 = x + q2c1
+q2ans4 = x - q2c1
+
+\end{sagesilent}
+
+\begin{problem}
+Consider the following polynomial:
+\[
+p(x) = \sage{q2f1(x)}
+\]
+
+Fully factor this polynomial to answer the following questions;
+
+How many real roots does this polynomial have (counting multiplicity; ie if it has a factor of $x^2$, then that counts as 2 roots for this question). \\
+$\answer{2}$
+
+\begin{problem}
+    What are the (real) zeros of the polynomial? (Order from smallest to largest)\\
+    $\answer{\sage{-q2c1}}, \answer{\sage{q2c1}}$
+\end{problem}
+
+How many non-real zeros of the polynomial are there?\\
+$\answer{2}$
+
+\begin{problem}
+    What are the (non-real) zeros of the polynomial? (Order from smallest coefficient of $i$ to the largest)\\
+    $\answer{\sage{-q2c1}}i, \answer{\sage{q2c1}}i$
+\end{problem}
+
+How many terms (with real-valued coefficients) does $p(x)$ have when it is factored (without using complex values)?\\
+$\answer{3}$
+\begin{problem}
+
+What is the factored form of the polynomial using only real-valued coefficients?\\
+Enter each term ordering highest degree to lowest degree terms, and ordering the single degree roots from left to right starting with the smallest and going up to largest zeros. For example: If you factor your polynomial to $p(x) = (x^2 + 1)(x+17)(x-13)(x-1)$ then you would enter them in the order: $(x^2+1)(x+17)(x-1)(x-13)$.\\
+$(\answer{\sage{q2ans2}})(\answer{\sage{q2ans3}})(\answer{\sage{q2ans4}})$
+\end{problem}
+\end{problem}
+
+
+
+
+
+\begin{sagesilent}
+q3c1 = NonZeroInt(-5,5)
+
+q3f1 = x^3 - q3c1^3
+
+q3ans1 = -q3c1 / 2 - 3^(1/2)*(q3c1 / 2)*i
+q3ans2 = -q3c1 / 2 + 3^(1/2)*(q3c1 / 2)*i
+
+q3ans3 = x^2 + q3c1*x + q3c1^2
+q3ans4 = x - q3c1
+
+\end{sagesilent}
+
+\begin{problem}
+Consider the following polynomial:
+\[
+p(x) = \sage{q3f1(x)}
+\]
+
+Fully factor this polynomial to answer the following questions;
+
+How many real roots does this polynomial have (counting multiplicity; ie if it has a factor of $x^2$, then that counts as 2 roots for this question). \\
+$\answer{1}$
+
+\begin{problem}
+    What are the (real) zeros of the polynomial? (Order from smallest to largest)\\
+    $\answer{\sage{q3c1}}$
+\end{problem}
+
+How many non-real zeros of the polynomial are there?\\
+$\answer{2}$
+
+\begin{problem}
+    What are the (non-real) zeros of the polynomial? (Order from smallest coefficient of $i$ to the largest)\\
+    $\answer{\sage{q3ans1}}, \answer{\sage{q3ans2}}$
+\end{problem}
+
+How many terms (with real-valued coefficients) does $p(x)$ have when it is factored (without using complex values)?\\
+$\answer{2}$
+\begin{problem}
+
+What is the factored form of the polynomial using only real-valued coefficients?\\
+Enter each term ordering highest degree to lowest degree terms, and ordering the single degree roots from left to right starting with the smallest and going up to largest zeros. For example: If you factor your polynomial to $p(x) = (x^2 + 1)(x+17)(x-13)(x-1)$ then you would enter them in the order: $(x^2+1)(x+17)(x-1)(x-13)$.\\
+$(\answer{\sage{q3ans3}})(\answer{\sage{q3ans4}})$
+\end{problem}
+\end{problem}
+
+
+\begin{sagesilent}
+q4c1 = RandInt(-5,5)
+q4c2 = RandInt(-5,5)
+q4c3 = RandInt(-5,5)
+q4c4 = RandInt(-5,5)
+q4c5 = NonZeroInt(-3,3)
+q4c6 = NonZeroInt(-3,3)
+q4c7 = NonZeroInt(-3,3)
+q4c8 = NonZeroInt(-3,3)
+
+q4f1 = q4c5*x - q4c1
+q4f2 = q4c6*x - q4c2
+q4f3 = q4c7*x - q4c3
+q4f4 = q4c8*x - q4c4
+
+q4p = expand(q4f1*q4f2*q4f3*q4f4)
+
+q4ans1 = q4c1/q4c5 + q4c2/q4c6 + q4c3/q4c7 + q4c4/q4c8
+q4ans2(x) = (q4f1*q4f2*q4f3*q4f4)(x)
+\end{sagesilent}
+
+\begin{problem}
+Consider the following polynomial:
+\[
+p(x) = \sage{q4p(x)}
+\]
+
+Fully factor this polynomial to answer the following questions;
+
+How many roots does this polynomial have (counting multiplicity; ie if it has a factor of $x^2$, then that counts as 2 roots for this question). \\
+$\answer{4}$
+
+What is the sum of the zeros of the polynomial?\\
+$\answer{\sage{q4ans1}}$
+
+What is the fully factored form of the polynomial?\\
+$\answer{\sage{q4ans2(x)}}$
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,157 @@
+\documentclass{ximera}
+\input{preamble}
+
+\title{Practice Problems for Topic 8}
+\begin{document}
+\begin{abstract}
+Topic 8 Unlimited Practice
+\end{abstract}
+\maketitle
+
+%%% Topic: Mathematical Reasoning. Subtopics:
+%   Clarifying questions
+%   Extraneous vs vital information/data
+%   Information vs Data
+\renewcommand{\texttt}[1]{#1}
+\renewcommand{\text}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                        Question Code                           %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{Useful-Sage-Macros}
+\begin{sagesilent}
+q5c1T = NonZeroInt(-10,10)
+q5c1 = q5c1T / NonZeroInt(-10,10,[-q5c1T,0,q5c1T])
+q5c2T = NonZeroInt(-10,10)
+q5c2 = q5c2T / NonZeroInt(-10,10,[-q5c2T,0,q5c2T])
+q5c3 = NonZeroInt(-10,10)
+q5c4 = NonZeroInt(-10,10)
+q5c5 = NonZeroInt(-10,10)
+
+
+q5v1 = [x^2, x^3, e^x, log(x), abs(x), x^(1/2)]
+q5p1 = RandInt(0,5)
+q5f1 = q5v1[q5p1]
+
+q5f2 = q5c1*(q5f1(q5c2*(x-q5c3))+q5c4)
+
+q5f3 = factor(q5c2*(x-q5c3))
+
+
+if q5c4 > 0:
+    q5UDvec = ["Up","Down"]
+else:
+    q5UDvec = ["Down","Up"]
+
+if q5c3 > 0:
+    q5LRvec = ["Right", "Left"]
+else:
+    q5LRvec = ["Left", "Right"]
+
+if q5c1 < 0:
+    flipYT = " and is flipped"
+    flipYF = ""
+else:
+    flipYF = " and is flipped"
+    flipYT = ""
+
+if q5c2 < 0:
+    flipXT = " and is flipped"
+    flipXF = ""
+else:
+    flipXF = " and is flipped"
+    flipXT = ""
+
+
+
+\end{sagesilent}
+
+\begin{problem}
+Consider the function $f(x) = \sage{q5f1(x)}$. Compute the result of the manipulation: 
+\[
+\sage{q5c1}\left(f\left( \sage{q5c2}(\sage{x-q5c3})\right) + (\sage{q5c4})\right) = \answer{\sage{q5f2(x)}}
+\]
+\begin{problem}
+Which of the following (graphical) transformations occur?
+
+\begin{selectAll}
+\choice{The graph is horizontally stretched/compressed to $\sage{abs(q5c2)}$ times it's previous width$\sage{flipXT}$}
+\choice[correct]{The graph is horizontally stretched/compressed to $\sage{1/abs(q5c2)}$ times it's previous width$\sage{flipXT}$}
+\choice{The graph is horizontally stretched/compressed to $\sage{abs(q5c2)}$ times it's previous width$\sage{flipXF}$}
+\choice{The graph is horizontally stretched/compressed to $\sage{1/abs(q5c2)}$ times it's previous width$\sage{flipXF}$}
+\choice[correct]{The graph is vertically stretched/compressed to $\sage{abs(q5c1)}$ times it's previous height$\sage{flipYT}$}
+\choice{The graph is vertically stretched/compressed to $\sage{1/abs(q5c1)}$ times it's previous height$\sage{flipYT}$}
+\choice{The graph is vertically stretched/compressed to $\sage{abs(q5c1)}$ times it's previous height$\sage{flipYF}$}
+\choice{The graph is vertically stretched/compressed to $\sage{1/abs(q5c1)}$ times it's previous height$\sage{flipYF}$} \end{selectAll}
+
+\begin{problem}
+Which of the following translations occur?
+
+\begin{selectAll}
+\choice[correct]{The graph is moved $\sage{q5UDvec[0]}$ by $\sage{abs(q5c4)}$ units}
+\choice{The graph is moved $\sage{q5UDvec[1]}$ by $\sage{abs(q5c4)}$ units}
+\choice{The graph is moved $\sage{q5LRvec[1]}$ by $\sage{abs(q5c3)}$ units}
+\choice[correct]{The graph is moved $\sage{q5LRvec[0]}$ by $\sage{abs(q5c3)}$ units}
+\end{selectAll}
+
+
+\begin{problem}
+Which manipulation to the graph occurs first?
+
+\begin{multipleChoice}
+\choice{The graph is horizontally stretched/compressed to $\sage{1/abs(q5c2)}$ times it's previous width$\sage{flipXT}$}
+\choice{The graph is vertically stretched/compressed to $\sage{abs(q5c1)}$ times it's previous height$\sage{flipYT}$}
+\choice{The graph is moved $\sage{q5UDvec[0]}$ by $\sage{abs(q5c4)}$ units}
+\choice[correct]{The graph is moved $\sage{q5LRvec[0]}$ by $\sage{abs(q5c3)}$ units}
+\end{multipleChoice}
+
+\begin{problem}
+Which manipulation to the graph occurs next?
+
+\begin{multipleChoice}
+\choice[correct]{The graph is horizontally stretched/compressed to $\sage{1/abs(q5c2)}$ times it's previous width$\sage{flipXT}$}
+\choice{The graph is vertically stretched/compressed to $\sage{abs(q5c1)}$ times it's previous height$\sage{flipYT}$}
+\choice{The graph is moved $\sage{q5UDvec[0]}$ by $\sage{abs(q5c4)}$ units}
+\choice{The graph is moved $\sage{q5LRvec[0]}$ by $\sage{abs(q5c3)}$ units}
+\end{multipleChoice}
+
+\begin{problem}
+Which manipulation to the graph occurs next?
+
+\begin{multipleChoice}
+\choice{The graph is horizontally stretched/compressed to $\sage{1/abs(q5c2)}$ times it's previous width$\sage{flipXT}$}
+\choice{The graph is vertically stretched/compressed to $\sage{abs(q5c1)}$ times it's previous height$\sage{flipYT}$}
+\choice[correct]{The graph is moved $\sage{q5UDvec[0]}$ by $\sage{abs(q5c4)}$ units}
+\choice{The graph is moved $\sage{q5LRvec[0]}$ by $\sage{abs(q5c3)}$ units}
+\end{multipleChoice}
+
+\begin{problem}
+Which manipulation to the graph occurs next?
+
+\begin{multipleChoice}
+\choice{The graph is horizontally stretched/compressed to $\sage{1/abs(q5c2)}$ times it's previous width$\sage{flipXT}$}
+\choice[correct]{The graph is vertically stretched/compressed to $\sage{abs(q5c1)}$ times it's previous height$\sage{flipYT}$}
+\choice{The graph is moved $\sage{q5UDvec[0]}$ by $\sage{abs(q5c4)}$ units}
+\choice{The graph is moved $\sage{q5LRvec[0]}$ by $\sage{abs(q5c3)}$ units}
+\end{multipleChoice}
+
+
+\end{problem}
+\end{problem}
+\end{problem}
+\end{problem}
+\end{problem}
+\end{problem}
+\end{problem}
+
+
+
+
+
+
+
+
+
+\end{document}

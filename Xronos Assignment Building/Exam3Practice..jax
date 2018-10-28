@@ -1,0 +1,225 @@
+\newenvironment {prompt}{}{}
+\newcommand {\DeclareMathOperator }[2]{\@OldDeclareMathOperator {##1}{##2}\immediate \write \myfile {\unexpanded {\DeclareMathOperator }{\unexpanded {##1}}{\unexpanded {##2}}}}
+\newcommand {\ungraded }[0]{}
+\newcommand {\skip@preamble }[0]{\let \document \relax \let \enddocument \relax \newenvironment {document}{\let \input \otherinput }{}\renewcommand {\documentclass }[2][subfiles]{}}
+\newcommand {\maketitle }[0]{ \pagestyle {empty} \begin {center} ~\\ \vskip .25\textheight \hrulefill \\ \vskip 1em \bfseries {\Huge \@title } \\ \hrulefill \\ \vskip 3em {\Large \@author } \vskip 2em {\large \@date } \end {center} \clearpage \ifnotoc \else \tableofcontents \clearpage \clearpage \fi \pagestyle {main} \let \maketitle \othermaketitle }
+\newcommand {\l@section }[0]{\@dottedtocline {1}{1.5em}{4.2em}}
+\newcommand {\l@subsection }[0]{\@dottedtocline {2}{3.8em}{4.2em}}
+\newcommand {\logo }[1]{\ifx \@onlypreamble \@notprerr \ClassError {xourse}{logo can only be used in the preamble} {Move your logo command to the preamble} \else \IfFileExists {##1}{\gdef \xourse@logo {##1}}{\ClassError {xourse}{logo file does not exist} {To use logo, make sure that the referenced image file exists}}\fi }
+\newcommand {\graded }[1]{}
+\newcommand {\newrobustcmd }[0]{}
+\newcommand {\renewrobustcmd }[0]{\@star@or@long \etb@renew@command }
+\newcommand {\providerobustcmd }[0]{\@star@or@long \etb@provide@command }
+\newcommand {\csshow }[1]{\begingroup \expandafter \endgroup \expandafter \show \csname ##1\endcsname }
+\newcommand {\csmeaning }[1]{\ifcsname ##1\endcsname \expandafter \meaning \csname ##1\endcsname \else \detokenize {undefined}\fi }
+\newcommand {\ifdef }[1]{\ifdefined ##1\expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\ifundef }[1]{\ifdefined ##1\ifx ##1\relax \expandafter \expandafter \expandafter \@firstoftwo \else \expandafter \expandafter \expandafter \@secondoftwo \fi \else \expandafter \@firstoftwo \fi }
+\newcommand {\ifcsdef }[1]{\ifcsname ##1\endcsname \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\ifcsundef }[1]{\ifcsname ##1\endcsname \expandafter \ifx \csname ##1\endcsname \relax \expandafter \expandafter \expandafter \@firstoftwo \else \expandafter \expandafter \expandafter \@secondoftwo \fi \else \expandafter \@firstoftwo \fi }
+\newcommand {\ifdefmacro }[0]{}
+\newcommand {\ifcsmacro }[1]{\ifcsdef {##1} {\expandafter \ifdefmacro \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifdefprefix }[1]{\ifdefmacro {##1} {\etb@ifdefprefix {##1}} {\@secondoftwo }}
+\newcommand {\ifcsprefix }[1]{\ifcsdef {##1} {\expandafter \ifdefprefix \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifdefparam }[0]{}
+\newcommand {\ifcsparam }[1]{\ifcsdef {##1} {\expandafter \ifdefparam \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifdefprotected }[0]{}
+\newcommand {\ifcsprotected }[1]{\ifcsdef {##1} {\expandafter \ifdefprotected \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifdefltxprotect }[1]{\begingroup \edef \etb@resrvda {\noexpand \protect \expandafter \noexpand \csname \expandafter \@gobble \string ##1 \endcsname }\expandafter \endgroup \ifx ##1\etb@resrvda \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\ifcsltxprotect }[1]{\ifcsdef {##1} {\expandafter \ifdefltxprotect \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifdefempty }[1]{\ifundef {##1} {\@secondoftwo } {\ifdefmacro {##1} {\ifdefparam {##1} {\@secondoftwo } {\etb@ifdefempty {##1}}} {\@secondoftwo }}}
+\newcommand {\ifcsempty }[1]{\ifcsundef {##1} {\@secondoftwo } {\expandafter \ifdefparam \csname ##1\endcsname {\@secondoftwo } {\expandafter \etb@ifdefempty \csname ##1\endcsname }}}
+\newcommand {\ifdefvoid }[1]{\ifundef {##1} {\@firstoftwo } {\ifdefmacro {##1} {\ifdefparam {##1} {\@secondoftwo } {\etb@ifdefempty {##1}}} {\@secondoftwo }}}
+\newcommand {\ifcsvoid }[1]{\ifcsundef {##1} {\@firstoftwo } {\expandafter \ifdefparam \csname ##1\endcsname {\@secondoftwo } {\expandafter \etb@ifdefempty \csname ##1\endcsname }}}
+\newcommand {\ifdefequal }[2]{\ifundef {##1} {\@secondoftwo } {\ifundef {##2} {\@secondoftwo } {\ifx ##1##2\expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }}}
+\newcommand {\ifcsequal }[2]{\ifcsundef {##1} {\@secondoftwo } {\ifcsundef {##2} {\@secondoftwo } {\expandafter \ifx \csname ##1\expandafter \endcsname \csname ##2\endcsname \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }}}
+\newcommand {\ifdefstrequal }[2]{\ifdefmacro {##1} {\ifdefmacro {##2} {\begingroup \edef \etb@tempa {\expandafter \strip@prefix \meaning ##1}\edef \etb@tempb {\expandafter \strip@prefix \meaning ##2}\ifx \etb@tempa \etb@tempb \aftergroup \@firstoftwo \else \aftergroup \@secondoftwo \fi \endgroup } {\@secondoftwo }} {\@secondoftwo }}
+\newcommand {\ifcsstrequal }[2]{\ifcsundef {##1} {\@secondoftwo } {\ifcsundef {##2} {\@secondoftwo } {\expandafter \ifdefstrequal \csname ##1\expandafter \endcsname \csname ##2\endcsname }}}
+\newcommand {\ifdefstring }[2]{\ifdefmacro {##1} {\begingroup \edef \etb@tempa {\expandafter \strip@prefix \meaning ##1}\edef \etb@tempb {\detokenize {##2}}\ifx \etb@tempa \etb@tempb \aftergroup \@firstoftwo \else \aftergroup \@secondoftwo \fi \endgroup } {\@secondoftwo }}
+\newcommand {\ifcsstring }[2]{\ifcsundef {##1} {\@secondoftwo } {\expandafter \ifdefstring \csname ##1\endcsname {##2}}}
+\newcommand {\ifdefcounter }[1]{\etb@ifcounter ##1&}
+\newcommand {\ifcscounter }[1]{\ifcsdef {##1} {\expandafter \ifdefcounter \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifltxcounter }[1]{\ifcsdef {c@##1} {\expandafter \ifdefcounter \csname c@##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifdeflength }[1]{\etb@iflength ##1&}
+\newcommand {\ifcslength }[1]{\ifcsdef {##1} {\expandafter \ifdeflength \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifdefdimen }[1]{\etb@ifdimen ##1&}
+\newcommand {\ifcsdimen }[1]{\ifcsdef {##1} {\expandafter \ifdefdimen \csname ##1\endcsname } {\@secondoftwo }}
+\newcommand {\ifstrequal }[2]{\begingroup \edef \etb@tempa {\detokenize {##1}}\edef \etb@tempb {\detokenize {##2}}\ifx \etb@tempa \etb@tempb \aftergroup \@firstoftwo \else \aftergroup \@secondoftwo \fi \endgroup }
+\newcommand {\ifstrempty }[1]{\expandafter \ifx \expandafter &\detokenize {##1}&\expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\ifblank }[1]{\expandafter \ifx \expandafter \relax \detokenize \expandafter {\@gobble ##1?}\relax \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\notblank }[1]{\expandafter \ifx \expandafter \relax \detokenize \expandafter {\@gobble ##1?}\relax \expandafter \@secondoftwo \else \expandafter \@firstoftwo \fi }
+\newcommand {\ifnumcomp }[3]{\ifnum \numexpr ##1\relax ##2\numexpr ##3\relax \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\ifnumequal }[1]{\ifnumcomp {##1}=}
+\newcommand {\ifnumgreater }[1]{\ifnumcomp {##1}>}
+\newcommand {\ifnumless }[1]{\ifnumcomp {##1}<}
+\newcommand {\ifnumodd }[1]{\ifodd \numexpr ##1\relax \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\ifdimcomp }[3]{\ifdim \dimexpr ##1\relax ##2\dimexpr ##3\relax \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }
+\newcommand {\ifdimequal }[1]{\ifdimcomp {##1}=}
+\newcommand {\ifdimgreater }[1]{\ifdimcomp {##1}>}
+\newcommand {\ifdimless }[1]{\ifdimcomp {##1}<}
+\newcommand {\ifboolexpe }[1]{\etb@be@beg \etb@be@bgroup ##1(&\etb@be@end }
+\newcommand {\ifboolexpr }[1]{\etb@boolexpr {##1}}
+\newcommand {\whileboolexpr }[2]{\etb@boolexpr {##1}{##2\whileboolexpr {##1}{##2}}{}}
+\newcommand {\unlessboolexpr }[2]{\etb@boolexpr {##1}{}{##2\unlessboolexpr {##1}{##2}}}
+\newcommand {\expandonce }[1]{\unexpanded \expandafter {##1}}
+\newcommand {\csexpandonce }[1]{\expandafter \expandonce \csname ##1\endcsname }
+\newcommand {\protecting }[0]{}
+\newcommand {\csdef }[1]{\expandafter \def \csname ##1\endcsname }
+\newcommand {\csedef }[1]{\expandafter \edef \csname ##1\endcsname }
+\newcommand {\csgdef }[1]{\expandafter \gdef \csname ##1\endcsname }
+\newcommand {\csxdef }[1]{\expandafter \xdef \csname ##1\endcsname }
+\newcommand {\protected@csedef }[0]{\etb@protected \csedef }
+\newcommand {\protected@csxdef }[0]{\etb@protected \csxdef }
+\newcommand {\cslet }[2]{\expandafter \let \csname ##1\endcsname ##2}
+\newcommand {\letcs }[2]{\ifcsdef {##2} {\expandafter \let \expandafter ##1\csname ##2\endcsname } {\undef ##1}}
+\newcommand {\csletcs }[2]{\ifcsdef {##2} {\expandafter \let \csname ##1\expandafter \endcsname \csname ##2\endcsname } {\csundef {##1}}}
+\newcommand {\csuse }[1]{\ifcsname ##1\endcsname \csname ##1\expandafter \endcsname \fi }
+\newcommand {\undef }[1]{\let ##1\etb@undefined }
+\newcommand {\csundef }[1]{\cslet {##1}\etb@undefined }
+\newcommand {\appto }[2]{\ifundef {##1} {\edef ##1{\unexpanded {##2}}} {\edef ##1{\expandonce ##1\unexpanded {##2}}}}
+\newcommand {\eappto }[2]{\ifundef {##1} {\edef ##1{##2}} {\edef ##1{\expandonce ##1##2}}}
+\newcommand {\gappto }[2]{\ifundef {##1} {\xdef ##1{\unexpanded {##2}}} {\xdef ##1{\expandonce ##1\unexpanded {##2}}}}
+\newcommand {\xappto }[2]{\ifundef {##1} {\xdef ##1{##2}} {\xdef ##1{\expandonce ##1##2}}}
+\newcommand {\protected@eappto }[0]{\etb@protected \eappto }
+\newcommand {\protected@xappto }[0]{\etb@protected \xappto }
+\newcommand {\preto }[2]{\ifundef {##1} {\edef ##1{\unexpanded {##2}}} {\edef ##1{\unexpanded {##2}\expandonce ##1}}}
+\newcommand {\epreto }[2]{\ifundef {##1} {\edef ##1{##2}} {\edef ##1{##2\expandonce ##1}}}
+\newcommand {\gpreto }[2]{\ifundef {##1} {\xdef ##1{\unexpanded {##2}}} {\xdef ##1{\unexpanded {##2}\expandonce ##1}}}
+\newcommand {\xpreto }[2]{\ifundef {##1} {\xdef ##1{##2}} {\xdef ##1{##2\expandonce ##1}}}
+\newcommand {\protected@epreto }[0]{\etb@protected \epreto }
+\newcommand {\protected@xpreto }[0]{\etb@protected \xpreto }
+\newcommand {\csappto }[1]{\expandafter \appto \csname ##1\endcsname }
+\newcommand {\cseappto }[1]{\expandafter \eappto \csname ##1\endcsname }
+\newcommand {\csgappto }[1]{\expandafter \gappto \csname ##1\endcsname }
+\newcommand {\csxappto }[1]{\expandafter \xappto \csname ##1\endcsname }
+\newcommand {\protected@cseappto }[0]{\etb@protected \cseappto }
+\newcommand {\protected@csxappto }[0]{\etb@protected \csxappto }
+\newcommand {\cspreto }[1]{\expandafter \preto \csname ##1\endcsname }
+\newcommand {\csepreto }[1]{\expandafter \epreto \csname ##1\endcsname }
+\newcommand {\csgpreto }[1]{\expandafter \gpreto \csname ##1\endcsname }
+\newcommand {\csxpreto }[1]{\expandafter \xpreto \csname ##1\endcsname }
+\newcommand {\protected@csepreto }[0]{\etb@protected \csepreto }
+\newcommand {\protected@csxpreto }[0]{\etb@protected \csxpreto }
+\newcommand {\numdef }[2]{\ifundef ##1{\let ##1\z@ }{}\edef ##1{\the \numexpr ##2}}
+\newcommand {\numgdef }[2]{\ifundef ##1{\let ##1\z@ }{}\xdef ##1{\the \numexpr ##2}}
+\newcommand {\csnumdef }[1]{\expandafter \numdef \csname ##1\endcsname }
+\newcommand {\csnumgdef }[1]{\expandafter \numgdef \csname ##1\endcsname }
+\newcommand {\dimdef }[2]{\ifundef ##1{\let ##1\z@ }{}\edef ##1{\the \dimexpr ##2}}
+\newcommand {\dimgdef }[2]{\ifundef ##1{\let ##1\z@ }{}\xdef ##1{\the \dimexpr ##2}}
+\newcommand {\csdimdef }[1]{\expandafter \dimdef \csname ##1\endcsname }
+\newcommand {\csdimgdef }[1]{\expandafter \dimgdef \csname ##1\endcsname }
+\newcommand {\gluedef }[2]{\ifundef ##1{\let ##1\z@skip }{}\edef ##1{\the \glueexpr ##2}}
+\newcommand {\gluegdef }[2]{\ifundef ##1{\let ##1\z@skip }{}\xdef ##1{\the \glueexpr ##2}}
+\newcommand {\csgluedef }[1]{\expandafter \gluedef \csname ##1\endcsname }
+\newcommand {\csgluegdef }[1]{\expandafter \gluegdef \csname ##1\endcsname }
+\newcommand {\mudef }[2]{\ifundef ##1{\def ##1{0mu}}{}\edef ##1{\the \muexpr ##2}}
+\newcommand {\mugdef }[2]{\ifundef ##1{\let ##1\z@ }{}\xdef ##1{\the \muexpr ##2}}
+\newcommand {\csmudef }[1]{\expandafter \mudef \csname ##1\endcsname }
+\newcommand {\csmugdef }[1]{\expandafter \mugdef \csname ##1\endcsname }
+\newcommand {\defcounter }[2]{\ifcsundef {c@##1} {\etb@noglobal \@nocounterr {##1}}{\csname c@##1\endcsname \numexpr ##2\relax }}
+\newcommand {\deflength }[2]{\ifundef {##1} {\etb@noglobal \etb@err@nolen {##1}}{##1\glueexpr ##2\relax }}
+\newcommand {\newbool }[1]{\expandafter \@ifdefinable \csname if##1\endcsname {\expandafter \newif \csname if##1\endcsname }}
+\newcommand {\providebool }[1]{\ifcsundef {if##1} {\expandafter \newif \csname if##1\endcsname } {\begingroup \edef \@tempa {\expandafter \meaning \csname if##1\endcsname }\ifx \@tempa \etb@isfalse \else \ifx \@tempa \etb@istrue \else \etb@error {\@backslashchar if##1 not a boolean}\@eha \fi \fi \endgroup }}
+\newcommand {\setbool }[2]{\ifcsundef {if##1} {\etb@noglobal \etb@err@nobool {##1}} {\ifcsundef {##1##2} {\etb@noglobal \etb@err@boolval {##2}} {\csname ##1##2\endcsname }}}
+\newcommand {\booltrue }[1]{\ifcsundef {if##1} {\etb@noglobal \etb@err@nobool {##1}} {\csname ##1true\endcsname }}
+\newcommand {\boolfalse }[1]{\ifcsundef {if##1} {\etb@noglobal \etb@err@nobool {##1}} {\csname ##1false\endcsname }}
+\newcommand {\ifbool }[1]{\ifcsundef {if##1} {\etb@err@nobool {##1}\@gobbletwo } {\csname if##1\endcsname \expandafter \@firstoftwo \else \expandafter \@secondoftwo \fi }}
+\newcommand {\notbool }[1]{\ifcsundef {if##1} {\etb@err@nobool {##1}\@gobbletwo } {\csname if##1\endcsname \expandafter \@secondoftwo \else \expandafter \@firstoftwo \fi }}
+\newcommand {\newtoggle }[1]{\ifcsdef {etb@tgl@##1} {\etb@error {Toggle '##1' already defined}\@eha } {\cslet {etb@tgl@##1}\@secondoftwo }}
+\newcommand {\providetoggle }[1]{\ifcsdef {etb@tgl@##1} {} {\cslet {etb@tgl@##1}\@secondoftwo }}
+\newcommand {\settoggle }[2]{\ifcsdef {etb@tgl@##1} {\ifcsdef {etb@toggle##2} {\csletcs {etb@tgl@##1}{etb@toggle##2}} {\etb@noglobal \etb@err@boolval {##2}}} {\etb@noglobal \etb@err@notoggle {##1}}}
+\newcommand {\toggletrue }[1]{\ifcsdef {etb@tgl@##1} {\cslet {etb@tgl@##1}\etb@toggletrue } {\etb@noglobal \etb@err@notoggle {##1}}}
+\newcommand {\togglefalse }[1]{\ifcsdef {etb@tgl@##1} {\cslet {etb@tgl@##1}\etb@togglefalse } {\etb@noglobal \etb@err@notoggle {##1}}}
+\newcommand {\iftoggle }[1]{\ifcsdef {etb@tgl@##1} {\csname etb@tgl@##1\endcsname } {\etb@err@notoggle {##1}\@gobbletwo }}
+\newcommand {\nottoggle }[1]{\ifcsdef {etb@tgl@##1} {\csname etb@tgl@##1\endcsname \@secondoftwo \@firstoftwo } {\etb@err@notoggle {##1}\@gobbletwo }}
+\newcommand {\robustify }[1]{\ifundef {##1} {\etb@error {\string ##1 undefined}\@eha } {\ifdefmacro {##1} {\ifdefltxprotect {##1} {\letcs \etb@resrvda {\expandafter \@gobble \string ##1 }\@tempswatrue } {\let \etb@resrvda ##1\@tempswafalse }\ifdefparam \etb@resrvda {\etb@ifscanable \etb@resrvda {\etb@robustify \etb@resrvda \let ##1\etb@resrvda } {\etb@error {Failed to robustify \string ##1} {The command is special and cannot be handled by \string \robustify .}\@tempswafalse }} {\protected \edef ##1{\expandonce \etb@resrvda }}\if@tempswa \ifcsdef {\string ##1 } {} {\csundef {\expandafter \@gobble \string ##1 }}\fi \undef \etb@resrvda } {\etb@error {\string ##1 not a macro}\@eha }}}
+\newcommand {\ifpatchable }[0]{\etb@dbg@trce \ifpatchable \begingroup \@makeother \#\@ifstar \etb@ifpatchable@i \etb@ifpatchable }
+\newcommand {\patchcmd }[0]{\etb@dbg@trce \patchcmd \begingroup \@makeother \#\etb@patchcmd }
+\newcommand {\apptocmd }[0]{\etb@dbg@trce \apptocmd \begingroup \@makeother \#\etb@hooktocmd \etb@append }
+\newcommand {\pretocmd }[0]{\etb@dbg@trce \pretocmd \begingroup \@makeother \#\etb@hooktocmd \etb@prepend }
+\newcommand {\tracingpatches }[0]{\etb@info {Enabling tracing}\input {etoolbox.def}\global \let \tracingpatches \relax }
+\newcommand {\rmntonum }[1]{\ifblank {##1} {} {\expandafter \etb@rti@end \number \numexpr \expandafter \etb@rti@prs \detokenize {##1}&\relax }}
+\newcommand {\ifrmnum }[1]{\ifblank {##1} {\@secondoftwo } {\expandafter \etb@ifr@prs \detokenize {##1}\relax }}
+\newcommand {\DeclareListParser }[0]{\@ifstar {\etb@defparser \etb@defparser@arg } {\etb@defparser \etb@defparser@do }}
+\newcommand {\listbreak }[0]{}
+\newcommand {\listadd }[2]{\ifblank {##2}{}{\appto ##1{##2|}}}
+\newcommand {\listeadd }[2]{\begingroup \edef \etb@tempa {\endgroup \noexpand \ifblank {##2}}\etb@tempa {}{\eappto ##1{##2|}}}
+\newcommand {\listgadd }[2]{\ifblank {##2}{}{\gappto ##1{##2|}}}
+\newcommand {\listxadd }[2]{\begingroup \edef \etb@tempa {\endgroup \noexpand \ifblank {##2}}\etb@tempa {}{\xappto ##1{##2|}}}
+\newcommand {\listcsadd }[1]{\expandafter \listadd \csname ##1\endcsname }
+\newcommand {\listcseadd }[1]{\expandafter \listeadd \csname ##1\endcsname }
+\newcommand {\listcsgadd }[1]{\expandafter \listgadd \csname ##1\endcsname }
+\newcommand {\listcsxadd }[1]{\expandafter \listxadd \csname ##1\endcsname }
+\newcommand {\ifinlist }[2]{\begingroup \def \etb@tempa ####1|##1|####2&{\endgroup \ifblank {####2}\@secondoftwo \@firstoftwo }\expandafter \etb@tempa \expandafter |##2|##1|&}
+\newcommand {\xifinlist }[1]{\begingroup \edef \etb@tempa {\endgroup \ifinlist {##1}}\etb@tempa }
+\newcommand {\ifinlistcs }[2]{\expandafter \etb@ifinlistcs@i \csname ##2\endcsname {##1}}
+\newcommand {\xifinlistcs }[1]{\begingroup \edef \etb@tempa {\endgroup \ifinlistcs {##1}}\etb@tempa }
+\newcommand {\forlistloop }[2]{\expandafter \etb@forlistloop \expandafter {##2}{##1}}
+\newcommand {\forlistcsloop }[2]{\expandafter \expandafter \expandafter \etb@forlistloop \expandafter \expandafter \expandafter {\csname ##2\endcsname }{##1}}
+\newcommand {\dolistloop }[0]{\forlistloop \do }
+\newcommand {\dolistcsloop }[0]{\forlistcsloop \do }
+\newcommand {\AtEndPreamble }[0]{\gappto \@endpreamblehook }
+\newcommand {\@endpreamblehook }[0]{}
+\newcommand {\AfterPreamble }[0]{\AtBeginDocument }
+\newcommand {\AfterEndPreamble }[0]{\gappto \@afterendpreamblehook }
+\newcommand {\@afterendpreamblehook }[0]{}
+\newcommand {\AfterEndDocument }[0]{\gappto \@afterenddocumenthook }
+\newcommand {\@afterenddocumenthook }[0]{}
+\newcommand {\AtBeginEnvironment }[1]{\csgappto {@begin@##1@hook}}
+\newcommand {\AtEndEnvironment }[1]{\csgappto {@end@##1@hook}}
+\newcommand {\BeforeBeginEnvironment }[1]{\csgappto {@beforebegin@##1@hook}}
+\newcommand {\AfterEndEnvironment }[1]{\csgappto {@afterend@##1@hook}}
+\newcommand {\vb@xt@ }[0]{\vbox to}
+\newcommand {\Gm@vrules@mpi }[0]{\hb@xt@ \@tempdima {\llap {\Gm@vrule }\ignorespaces \hskip \textwidth \Gm@vrule \hskip \marginparsep \llap {\Gm@vrule }\hfil \Gm@vrule }}
+\newcommand {\Gm@vrules@mpii }[0]{\hb@xt@ \@tempdima {\hskip -\marginparwidth \hskip -\marginparsep \llap {\Gm@vrule }\ignorespaces \hskip \marginparwidth \rlap {\Gm@vrule }\hskip \marginparsep \llap {\Gm@vrule }\hskip \textwidth \rlap {\Gm@vrule }\hss }}
+\newcommand {\Gm@pageframes }[0]{\vb@xt@ \z@ {\ifGm@showcrop \vb@xt@ \z@ {\vskip -1\Gm@truedimen in\vskip \Gm@layoutvoffset \hb@xt@ \z@ {\hskip -1\Gm@truedimen in\hskip \Gm@layouthoffset \vb@xt@ \Gm@layoutheight {\let \protect \relax \hb@xt@ \Gm@layoutwidth {\Gm@cropmark (-1,1,-3,3)\hfil \Gm@cropmark (1,1,3,3)}\vfil \hb@xt@ \Gm@layoutwidth {\Gm@cropmark (-1,-1,-3,-3)\hfil \Gm@cropmark (1,-1,3,-3)}}\hss }\vss }\fi \ifGm@showframe \if@twoside \ifodd \count \z@ \let \@themargin \oddsidemargin \else \let \@themargin \evensidemargin \fi \fi \moveright \@themargin \vb@xt@ \z@ {\vskip \topmargin \vb@xt@ \z@ {\vss \Gm@hrule }\vskip \headheight \vb@xt@ \z@ {\vss \Gm@hruled }\vskip \headsep \vb@xt@ \z@ {\vss \Gm@hrule }\@tempdima \textwidth \advance \@tempdima by \marginparsep \advance \@tempdima by \marginparwidth \if@mparswitch \ifodd \count \z@ \Gm@vrules@mpi \else \Gm@vrules@mpii \fi \else \Gm@vrules@mpi \fi \vb@xt@ \z@ {\vss \Gm@hrule }\vskip \footskip \vb@xt@ \z@ {\vss \Gm@hruled }\vss }\fi }}
+\newcommand {\geometry }[1]{\Gm@clean \setkeys {Gm}{##1}\Gm@process }
+\newcommand {\Gm@changelayout  }[0]{\setlength {\@colht }{\textheight } \setlength {\@colroom }{\textheight }\setlength {\vsize }{\textheight } \setlength {\columnwidth }{\textwidth }\if@twocolumn \advance \columnwidth -\columnsep \divide \columnwidth \tw@ \@firstcolumntrue \fi \setlength {\hsize }{\columnwidth }\setlength {\linewidth }{\hsize }}
+\newcommand {\newgeometry }[1]{\clearpage \Gm@restore@org \Gm@initnewgm \Gm@newgmtrue \setkeys {Gm}{##1}\Gm@newgmfalse \Gm@process \ifnum \mag =\@m \else \Gm@magtooffset \fi \Gm@changelayout \Gm@showparams {newgeometry}}
+\newcommand {\restoregeometry }[0]{\clearpage \Gm@restore@pkg \Gm@changelayout }
+\newcommand {\savegeometry }[1]{\Gm@save \expandafter \edef \csname Gm@restore@@##1\endcsname {\Gm@restore }}
+\newcommand {\loadgeometry }[1]{\clearpage \@ifundefined {Gm@restore@@##1}{\PackageError {geometry}{\string \loadgeometry : name `##1' undefined}{The name `##1' should be predefined with \string \savegeometry }}{\@nameuse {Gm@restore@@##1}\Gm@changelayout }}
+\newcommand {\expl@create@bool@option }[2]{\DeclareOption {##1}{\chardef ##2=1 }\DeclareOption {##1=true}{\chardef ##2=1 }\DeclareOption {##1=false}{\chardef ##2=0 }\newcommand *##2{}\chardef ##2=0 }
+\newcommand {\l@expl@check@declarations@bool }[0]{}
+\newcommand {\l@expl@log@functions@bool }[0]{}
+\newcommand {\l@expl@options@clist }[0]{}
+\newcommand {\TagList@CatGeneral }[0]{{Cat@One,Cat@Two,Cat@Three,Cat@Four,Cat@Five} }
+\newcommand {\TagList@MasterCatOne }[0]{{Ans@MC, Ans@ShortAns, Ans@MultiAns, Ans@FRQ, Ans@Match, Ans@Graph, Ans@Table} }
+\newcommand {\TagList@MasterCatTwo }[0]{{Type@Compute, Type@Concept, Type@Approximate, Type@Tutorial} }
+\newcommand {\TagList@MasterCatThree }[0]{{Topic@Limit, Topic@Derivative, Topic@Integral, Topic@Lim-Imp, Topic@Int-Imp, Topic@Derv-Imp, Topic@Lim-Mult, Topic@Int-Mult, Topic@Derv-Mult} }
+\newcommand {\TagList@MasterCatFour }[0]{{Sub@Poly, Sub@Exp, Sub@Log, Sub@Trig, Sub@Arctrig, Sub@Piecewise, Sub@Rational, Sub@Radical, Sub@Disc-Remove, Sub@Disc-Inf, Sub@Disc-Jump, Sub@Asymptote, Sub@Continuity, Sub@Domain, Sub@Tan-Line, Sub@RoC, Sub@Avg-RoC, Sub@Differential, Sub@Method-Log, Sub@Extrema-Local, Sub@Extrema-Absolute, Sub@Critical-Number, Sub@Related-Rates, Sub@Multi-Deriv, Sub@Optimization, Sub@Inflection, Sub@Riemann, Sub@Sub-u, Sub@Definite, Sub@Indefinite, Sub@Power-Rule, Sub@Chain-Rule, Sub@Product-Rule, Sub@Quotient-Rule, Sub@Theorems-IVT, Sub@Theorems-MVT, Sub@Theorems-FTC, Sub@Theorems-EVT, Sub@LHopital, Sub@Squeeze, Sub@Formal-Def, Sub@Implicit, Sub@DifferenceQuotient, Sub@LimitLaws, Sub@Sign-Graph, Sub@Motion, Sub@Symmetry, Sub@OneSided, } }
+\newcommand {\TagList@MasterCatFive }[0]{{Question@Number} }
+\newcommand {\ifcounter }[2]{\ifcsname c@##1\endcsname \else \MakeCounter {##1} \fi \setcounter {##1}{##2} }
+\newcommand {\RandMe }[3]{\par \ifthenelse {\isempty {##3}} { \setcounter {RndQuant}{##1+1} } { \setcounter {RndQuant}{##3+1} } \par \forloop {Iteration1}{1}{\arabic {Iteration1} < \arabic {RndQuant}}{ \ifcounter {##2\Roman {Iteration1}}{\arabic {Iteration1}} } \par \par \forloop {Iteration1}{1}{\arabic {Iteration1} < \arabic {RndQuant}}{ \@genrand {TempRandMe}{\arabic {Iteration1}}{##1} \par \ifcounter {Temp@RandMe}{\TempRandMe } \ifcounter {Temp@Hold}{\arabic {##2\Roman {Temp@RandMe}}} \par \ifcounter {##2\Roman {Temp@RandMe}}{\arabic {##2\Roman {Iteration1}}} \ifcounter {##2\Roman {Iteration1}}{\arabic {Temp@Hold}} } }
+\newcommand {\@genrand }[3]{ \expandafter \pgfmathrandominteger \csname ##1\endcsname {##2}{##3} \setcounter {##1}{\csname ##1\endcsname } }
+\newcommand {\inner@SetKeys }[1]{ \setkeys {key@Inner}{InnerShuffle={}, Order@Direction={},##1} }
+\newcommand {\file@Write }[2]{ \expandafter \immediate \expandafter \write \csname ##1\endcsname {##2} }
+\newcommand {\file@Initialize }[1]{ \expandafter \newwrite \csname ##1\endcsname \expandafter \immediate \expandafter \openout \csname ##1\endcsname =file-\jobname --ProblemList-##1.tex }
+\newcommand {\question@SetKeys }[1]{ \setkeys {key@ProblemSelect}{PerFile={}, Static={}, Shuffle={}, GroupShuffle={},##1} }
+\newcommand {\latexProblemContent }[1]{\stepcounter {Question@CurNumber}\ifveryVerbose We are checking problem \arabic {Question@CurNumber}. \\ \fi \ifnum \value {Problem@RemainToCheck}>1\par \ifVerbose Registered the last question to be: \arabic {Problem@ToList}\\ Registered the Current question to be: \arabic {Question@CurNumber}\\ \fi \par \ifVerbose Looking for question \arabic {Problem@NextRef}.\\ \fi \par \ifnum \value {Question@CurNumber}=\value {Problem@NextRef}\ifVerbose I think I found question \arabic {Problem@NextRef} so I am assigning a new command now.\\ \fi \stepcounter {Question@DisplayCounter}\expandafter \newcommand \csname Question@Display\roman {Problem@GroupingNumber}\Roman {Question@DisplayCounter}\endcsname {##1 } \file@Write {\Roman {file@GroupRef}}{\unexpanded {##1}} \ifVerbose I assigned the command to be Question@Display\roman {Problem@GroupingNumber}\Roman {Question@DisplayCounter} in theory.\\ \fi \addtocounter {Problem@RemainToCheck}{-1}\addtocounter {Problem@EndRef}{-1}\ifnum \value {Problem@EndRef}>0\ifVerbose I think found and properly assigned question \arabic {Problem@NextRef}\\ \fi \setcounter {Problem@NextRef}{\arabic {Question@Location\Roman {Problem@EndRef}}} \ifVerbose Now I'm looking for problem \arabic {Problem@NextRef}\\ \fi \fi \fi \fi \ifveryVerbose The current problem is \arabic {Question@CurNumber}.\\ The Current number of remaining problems is \arabic {Problem@EndRef}.\\ The next problem to find is \arabic {Problem@NextRef}.\\ \fi }
+\newcommand {\ProblemFileHeader }[1]{\ifquestionCount \addtocounter {Total@Question}{##1} \fi \ifPerFileQ \setcounter {Total@Question}{##1} \questionPulltrue \ifVerbose We should now be Pulling Questions (questionPulltrue)\\ \fi \addtocounter {Problem@ToList}{\arabic {Given@ProblemNumber}} \ChooseQuestions {\arabic {Given@ProblemNumber}} \problemToFindtrue \ifVerbose There is a question to Find (questionFindtrue)\\ \fi \par \else \ifVerbose The end ref is currently \arabic {Problem@EndRef}.\\ \fi \par \ifnum \value {Problem@EndRef}>0\par \ifquestionPull \ifVerbose We are now checking that this file contains problems in our range. \\ \fi \par \setcounter {Problem@Range}{\arabic {Question@CurNumber}}\addtocounter {Problem@Range}{##1}\par \ifnum \value {Problem@Range}>\value {Problem@NextRef} \problemToFindtrue \ifVerbose There is a question to Find (questionFindtrue)\\ \fi \else \addtocounter {Question@CurNumber}{##1} \fi \fi \fi \fi }
+\newcommand {\ProblemFileFooter }[0]{\problemToFindfalse \ifPerFileQ \setcounter {Question@CurNumber}{0} \questionPullfalse \fi }
+\newcommand {\ChooseQuestions }[1]{\make@Vector [Order@Direction=reverse]{Question@Location}{1}{\arabic {Total@Question}}{##1}\par \questionPulltrue \ifVerbose We should now be Pulling Questions (questionPulltrue)\\ \fi \setcounter {Problem@RemainToCheck}{\arabic {Given@ProblemNumber}} \setcounter {Problem@EndRef}{\arabic {Given@ProblemNumber}} \stepcounter {Problem@RemainToCheck} \setcounter {Problem@NextRef}{\arabic {Question@Location\Roman {Problem@EndRef}}} \ifVerbose Problems That Remain to Check \arabic {Problem@RemainToCheck}\\ End Reference pointer: \arabic {Problem@EndRef}\\ I think our first problem is \arabic {Problem@NextRef}\\ I think our ending reference is \arabic {Problem@EndRef}\\ \fi \par }
+\newcommand {\Master@Input@Test }[0]{\ifVerbose I tried to run Master Input Test \fi \par \SearchForTag {Topic@Limit}{ \ifVerbose I detected that I should input the Limit-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Limit-Input} } \par \SearchForTag {Topic@Derivative}{ \ifVerbose I detected that I should input the Derivative-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Derivative-Input} } \par \SearchForTag {Topic@Integral}{ \ifVerbose I detected that I should input the Integral-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Integral-Input} } \par \SearchForTag {Topic@Sequence}{ \ifVerbose I detected that I should input the Sequence-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Sequence-Input} } \par \SearchForTag {Topic@Series}{ \ifVerbose I detected that I should input the Series-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Series-Input} } \par \par \SearchForTag {Topic@Parametric}{ \ifVerbose I detected that I should input the Parametric-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Parametric-Input} } \par \SearchForTag {Topic@Polar}{ \ifVerbose I detected that I should input the Polar-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Polar-Input} } \par \SearchForTag {Topic@Volume}{ \ifVerbose I detected that I should input the Volume-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Volume-Input} } \par \SearchForTag {Topic@Precalc}{ \ifVerbose I detected that I should input the Precalc-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc Precalc-Input} } \par \par \SearchForTag {Topic@TestBank}{ \ifVerbose I detected that I should input the TestBank-Input file \ifquestionCount in order to get question counts!\\ \else in order to find problems!\\ \fi \fi \expandafter \input {\QBank@loc TestBank-Input} } \par \par }
+\newcommand {\select@Question }[1]{ \ifVerbose \ifquestionCount We called the file ##1 to find problem counts!\\ \else We called the file ##1, this time to find problems!\\ \fi \fi \input {##1} }
+\newcommand {\QSelectEnd }[0]{ \setcounter {Total@Question}{0}\setcounter {Problem@ToList}{0} \setcounter {Question@CurNumber}{0} \stepcounter {file@GroupRef} \questionCounttrue \questionPullfalse \question@Staticfalse \PerFileQfalse \QSShufflefalse \stepcounter {Problem@GroupNumberEnd} \stepcounter {Problem@GroupingNumber} \setcounter {Question@DisplayCounter}{0} \par }
+\newcommand {\findQuestion }[4]{ \findingQuestiontrue \par \set@RelaxActiveTags {} \set@StrictActiveTags {} \par \ifthenelse {\isempty {##1}} { } { \addTo@RelaxActiveTags {##1} } \par \ifthenelse {\isempty {##2}} { } { \addTo@RelaxActiveTags {##2} } \par \ifthenelse {\isempty {##3}} { } { \addTo@RelaxActiveTags {##3} } \par \ifthenelse {\isempty {##4}} { } { \addTo@StrictActiveTags {##4} } \Master@Input@Test \arabic {Total@Question} \findingQuestionfalse }
+\newcommand {\QBank@loc }[0]{/home/jason/texmf/tex/latex/QuestionBanks/}
+\newcommand {\log }[0]{\ln }
+\newcommand {\reserved@a }[2]{}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }
+\newcommand {\reserved@a }[1]{}
+\newcommand {\reserved@a }[2]{}
+\newcommand {\vnameref  }[1]{\unskip ~\nameref {##1}\@vpageref [\unskip ]{##1}}
+\newcommand {\ref  }[0]{\@ifstar \@refstar \T@ref }
+\newcommand {\pageref  }[0]{\@ifstar \@pagerefstar \T@pageref }
+\newcommand {\nameref  }[0]{\@ifstar \@namerefstar \T@nameref }
+\newcommand {\ST@wsf }[1]{\immediate \write \ST@sf {##1}}
+\newcommand {\input }[1]{}
+\newcommand {\document }[0]{\let \input \otherinput }
+\newcommand {\input }[1]{}
+\newcommand {\document }[0]{\let \input \otherinput }
+\newcommand {\text }[1]{##1}
+\newcommand {\reserved@a }[2]{}
+\newcommand {\reserved@a }[0]{\AtBeginDocument }
+\newcommand {\reserved@a }[1]{}
+\newcommand {\reserved@a }[2]{}

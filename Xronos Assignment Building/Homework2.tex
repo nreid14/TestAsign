@@ -1,0 +1,227 @@
+\documentclass{ximera}
+
+
+\title{Intro to Mathematical Reasoning}
+\begin{document}
+\begin{abstract}
+Topic 1 Practice Problems
+\end{abstract}
+\maketitle
+
+%%% Topic: Mathematical Reasoning. Subtopics:
+%   Clarifying questions
+%   Extraneous vs vital information/data
+%   Information vs Data
+%
+
+\input{Useful-Validators}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%                        Question Code                           %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{problem}
+    You currently have 2 cats and 2 dogs.  Which of the following is \textbf{extraneous} information when calculating the cost of feeding your pets? (Select all that apply)
+    \begin{selectAll}
+        \choice{Cat food costs \$0.59 per can.}
+        \choice{Each cat eats one can of cat food per day.}
+        \choice[correct]{One of your dogs is slightly afraid of your cats.}
+        \choice[correct]{Your cats will only eat wet food.}
+        \choice{Each dog eats 1lb of dry dog food per day, and a 15lb bag costs \$30.}
+    \end{selectAll}
+    \begin{problem}
+        How much will it cost to feed your pets for one week?
+        $\answer{36.26}$
+        \begin{problem}
+            You decide you want to adopt additional pets, but you need to make sure you can afford it.  You decide to figure out a generalized model for the cost of feeding your cats and dogs.
+
+            Which of the following are \textbf{independent} variables? (Select all that apply).
+            \begin{selectAll}
+                \choice[correct]{The number of cats you adopt.}
+                \choice{The cost to feed 1 cat for a week.}
+                \choice{The cost to feed all your dogs for one week.}
+                \choice[correct]{The number of dogs you adopt.}
+                \choice{The total cost to feed all your pets for a week.}
+            \end{selectAll}
+
+            \begin{problem}
+                Write an equation that relates the total cost of feeding your pets for \textbf{one day}, $T$, to the number of new cats you adopt, $c$, and the number of new dogs you adopt, $d$.  Make sure you include the cost of feeding your current cats and dogs.
+                $T$ = $\answer{0.59c + 2d + 5.18}$
+            \end{problem}
+        \end{problem}
+    \end{problem}
+\end{problem}
+
+\begin{problem}
+    You work for a company that provides long-distance moving services and your boss has asked you to simplify the billing process to improve customer satisfaction.  He provides you with the following information.
+    \begin{itemize}
+        \item The company only moves 1-2 bedroom houses and uses 14' trucks for moves of this size.
+        \item The cost of travel is \$1.20 per mile.
+        \item Loading and unloading services cost a flat fee of \$150.
+        \item There is a rental fee of \$45 per day of travel (in addition to any and all other costs)
+        \item A truck can travel up to 450 miles in a day.
+    \end{itemize}
+    Which pieces of data are worth generalizing?
+    \begin{selectAll}
+        \choice{The size of the trucks.}
+        \choice{The number of bedrooms a single truck can move.}
+        \choice{The cost of travel per mile.}
+        \choice[correct]{The number of miles the customer is moving.}
+        \choice{The cost of loading and unloading.}
+        \choice[correct]{The number of days of travel.}
+    \end{selectAll}
+
+    \begin{problem}
+        Using the given data, you decide on the following variables.
+        \begin{itemize}
+            \item $M$ = Number of miles the customer is moving
+            \item $D$ = Number of days of travel
+            \item $C_M$ = Cost of the mileage
+            \item $C_D$ = Cost of the rental for $D$ days
+            \item $C_T$ = Total cost
+        \end{itemize}
+        Which of the following is \textbf{true} about the relationships among these variables?
+        \begin{multipleChoice}
+            \choice{The number of days of travel is unrelated to any of the other variables.}
+            \choice{The total cost depends only on the cost of mileage and the cost of the rental.}
+            \choice[correct]{The cost of the mileage can be found by multiplying the miles moved by the cost per mile.}
+            \choice{The total cost can be written solely in terms of the number of days of the rental.}
+        \end{multipleChoice}
+
+        \begin{problem}
+            Which of the following equations accurately describes $C_D$?
+            \begin{multipleChoice}
+                \choice{$C_D = \frac{45M}{450}$}
+                \choice[correct]{$C_D = 45D$}
+                \choice{$C_D = 1.20M$}
+                \choice{$C_D = 45M$}
+            \end{multipleChoice}
+
+            \begin{problem}
+                Write a fully simplified equation for $C_T$, with fractional coefficients.
+
+                $C_T$ = $\answer{\frac{6}{5}M + 45D + 150}$
+            \end{problem}
+        \end{problem}
+
+    \end{problem}
+
+\end{problem}
+
+\begin{problem}
+    Which of the following are examples of independent variables?
+    \begin{selectAll}
+        \choice[correct]{$y$ = height of a wall. You are trying to calculate the surface area of a wall for painting.}
+        \choice{$C$ = total cost of installing new windows. You are modeling the costs for building a house and you know each new window costs \$140.}
+        \choice[correct]{$n$ = the number of katanas purchased by a martial arts school. You know each katana costs \$50 and you are trying to calculate the total cost to equip the school with katanas.}
+        \choice{$P$ = the average price of gasoline from January 1, 2018 to August 1, 2018. You are running analysis on cost to consumers for driving in the first three quarters of 2018, \\
+        given driving distance habits and gasoline price per gallon for each week.}
+    \end{selectAll}
+\end{problem}
+
+\begin{problem}
+    A company makes custom envelopes and have asked you determine the price they should charge per envelope based on its size.  They provide the following information.
+    \begin{itemize}
+        \item Envelopes can be made in any size.
+        \item The time to make an envelope is 20 seconds for all sizes.
+        \item The paper for an envelope is \$2.30 per sqaure foot.
+        \item Envelope makers are paid \$30 per hour.
+        \item They want to make a 5\% profit on each envelope.
+        \item The company offers a discount on orders of more than 1000 envelopes.
+    \end{itemize}
+    Which of the given pieces of information is extraneous?
+    \begin{multipleChoice}
+        \choice{Envelopes can be made in any size.}
+        \choice{The time to make an envelope is 20 seconds for all sizes.}
+        \choice{The paper for an envelope is \$2.30 per sqaure foot.}
+        \choice{Envelope makers are paid \$30.00 per hour.}
+        \choice{They want to make a 5\% profit on each envelope.}
+        \choice[correct]{The company offers a discount on the entire order, for orders of more than 1000 envelopes.}
+    \end{multipleChoice}
+
+    \begin{problem}
+        Which of the following are sensible generalizations of the given data?
+        \begin{selectAll}
+            \choice[correct]{$\ell$ = length of the envelope in inches.}
+            \choice{$C_p$ = cost per square foot of the paper.}
+            \choice[correct]{$w$ = width of the envelope in inches.}
+            \choice[correct]{$C$ = cost of making an $l$ by $w$ envelope.}
+            \choice{$h$ = hourly wage of an envelope maker.}
+        \end{selectAll}
+
+        \begin{problem}
+            What is the cost of labor to make \textbf{one} envelope? \$$\answer[tolerance=0.01]{0.167}$ (Round to a tenth of a cent)
+        \end{problem}
+
+        \begin{problem}
+            What is the cost of the materials to make an envelope that is $\ell$ inches by $w$ inches? Enter a fully simplified expression with decimal coefficients (Round to a tenth of a cent), and \textbf{make sure your units match!} \$$\answer{0.016lw}$ 
+
+            \begin{problem}
+                Write an expression for how much the company should charge per envelope to make it's desired 5\% profit.  If necessary, round to three decimal places. \$$\answer{0.017lw + 0.175)}$
+            \end{problem}
+        \end{problem}
+    \end{problem}
+\end{problem}
+
+\begin{problem}
+    A group of your friends has decided to build their own quadcopters, but they have no idea how to calculate the cost and have asked for your help.  After doing some research, you have the following information.
+    \begin{itemize}
+        \item{Flight time of the quadcopter costs about \$1 per minute.}
+        \item{A camera attachment costs \$30.}
+        \item{A quadcopter is made with four propellers, each with its own motor.}
+        \item{The body of the quadcopter costs about \$3 per inch of propeller radius.}
+        \item{Any additional attachments (other than the camera) cost \$10 each and require 1 additional inch of propeller radius.}
+    \end{itemize}
+    Which are good choices to generalize? (Select all that apply.)
+    \begin{selectAll}
+        \choice[correct]{Flight time of the quadcopter.}
+        \choice{The cost of a camera attachment.}
+        \choice{The number of propellers.}
+        \choice[correct]{The radius of the propellers.}
+        \choice[correct]{Number of additional attachments (other than the camera).}
+    \end{selectAll}
+    \begin{problem}
+        Using $t$ for the flight time (in minutes), $r$ for the radius of the propeller (in inches), and $a$ for the number of additional (non-camera) attachments, how much will it cost to build a quadcopter that does not have a camera? (Make sure to combine all like terms.)
+
+        Cost = $\answer{t + 3r + 13a}$
+    \end{problem}
+
+\end{problem}
+
+\begin{problem}
+    Which of the following pieces of information about a late-night cookie delivery service are examples of data?
+    \begin{selectAll}
+        \choice[correct]{The company owns and maintains 25 delivery vehicles.}
+        \choice{The cookies are made with premium ingredients, which are quite expensive.}
+        \choice[correct]{The company makes 648 deliveries on average each week.}
+        \choice{Their cookies were recently voted best in the city in a survey by a popular magazine.}
+        \choice[correct]{They have 15 delivery drivers working on each shift.}
+    \end{selectAll}
+
+    \begin{problem}
+        Suppose this company is looking to expand and wants to figure out the cost of doing so. which of the following additional information would be relevant?
+        \begin{selectAll}
+            \choice[correct]{It costs \$23,000 to purchase a new delivery vehicle, including the custom painting of their logo.}
+            \choice[correct]{The ingredients cost to make a dozen cookies for delivery is \$15.}
+            \choice{The popluation of the city is 300,000, and more people means more potential sales.}
+            \choice[correct]{This company is only looking to expand delivery services.}
+            \choice[correct]{Each delivery driver is paid \$13 per hour and a typical shift is 5 hours.}
+        \end{selectAll}
+
+        \begin{problem}
+            If we use the variable `$v$' to represent new delivery vehicles and the variable `$s$' to represent additional shifts for driviers, write an equation for the cost of buying the new vehicles and paying for the new shifts a week.
+
+            C = $\answer{23000v + 65s}$
+
+            \begin{problem}
+                After assessing market demand, the company decides to purchase four new vehicles and hire seven new shifts of delivery drivers.  They also decide to buy ingredients for an additional 25 dozen cookies a week.  What will the initial cost (ie the first week's cost) of this expansion be?\\
+                \$$\answer{92830}$
+            \end{problem}
+        \end{problem}
+    \end{problem}
+\end{problem}
+
+
+
+\end{document}
